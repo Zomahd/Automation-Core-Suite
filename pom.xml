@@ -3,12 +3,12 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.accenture.dpcs.hero</groupId>
-    <artifactId>hero-suite</artifactId>
+    <groupId>com.automation.core.suite</groupId>
+    <artifactId>automation-core-suite</artifactId>
     <packaging>jar</packaging>
-    <version>2.0</version>
+    <version>1.0</version>
 
-    <name>hero-suite</name>
+    <name>automation-core-suite</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
