@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 @SuppressWarnings("unused")
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 public @interface Description {
     String value();
 }

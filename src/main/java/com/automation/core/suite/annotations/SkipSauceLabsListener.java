@@ -8,4 +8,5 @@ import java.lang.annotation.Target;
 @SuppressWarnings("unused")
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface SkipSauceLabsListener {}
+public @interface SkipSauceLabsListener {
+}

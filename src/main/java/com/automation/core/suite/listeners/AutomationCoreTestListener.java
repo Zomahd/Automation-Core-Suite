@@ -12,12 +12,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AutomationCoreTestListener extends IAutomationCoreListener implements  ITestListener {
+public class AutomationCoreTestListener extends IAutomationCoreListener implements ITestListener {
 
     protected List<ITestListener> listeners = null;
 
     public AutomationCoreTestListener() {
-        if(listeners == null) {
+        if (listeners == null) {
             listeners = new ArrayList<>();
             addListeners(AutomationCoreConfigWrapper.INSTANCE.get("automation.listeners", "com.automation.core.suite.listeners.AutomationCoreResultScreenshotListener," +
                     "com.automation.core.suite.listeners.AutomationCoreReportAttachmentsListener," +
@@ -136,6 +136,6 @@ public class AutomationCoreTestListener extends IAutomationCoreListener implemen
 
     protected void methodError(String method, ITestNGListener listener, Throwable throwable) {
         AutomationCoreErrorUtils.log("AutomationCoreTestListener: " + ERROR_WHILE_EXEC + " \"" +
-                method + "\" of \"" + ((ITestListener)listener).getClass().getName() + "\"", throwable);
+                method + "\" of \"" + ((ITestListener) listener).getClass().getName() + "\"", throwable);
     }
 }

@@ -5,7 +5,7 @@ package com.automation.core.suite.configuration;
  * By default it uses the AutomationCorePropertiesConfig class to access the automation-core-suite.properties files and load configuration, but using it's
  * init method ant client can provide it's own IAutomationCoreConfig custom implementation in order to load the configuration.
  */
-public enum AutomationCoreConfigWrapper implements IAutomationCoreConfig{
+public enum AutomationCoreConfigWrapper implements IAutomationCoreConfig {
 
     INSTANCE;
 
@@ -35,7 +35,7 @@ public enum AutomationCoreConfigWrapper implements IAutomationCoreConfig{
     @Override
     public String get(String key, String def) {
         loadDefaultConfig();
-        return this.iAutomationCoreConfig.get(key,def);
+        return this.iAutomationCoreConfig.get(key, def);
     }
 
     @Override

@@ -5,7 +5,7 @@ import java.util.Map;
 public interface Browser {
 
     String getService();
-    
+
     String getPort();
 
     String getBrowser();

@@ -52,13 +52,12 @@ public class WebDriverBuilder {
         } else if ("firefox".equals(browserName)) {
             System.setProperty("webdriver.gecko.driver", AutomationCoreConfigWrapper.INSTANCE.get("wd.firefox.driver", ""));
             wd = new FirefoxDriver(capabilities);
-        }   else    {
+        } else {
             throw new UnknownBrowserException("Unknown browser: " + browserName);
         }
 
         return wd;
     }
-
 
 
     public static WebDriver remote(Browser browser, DesiredCapabilities capabilities) {
@@ -67,11 +66,11 @@ public class WebDriverBuilder {
 
         if (remoteUrl == null) {
             remoteUrl = AutomationCoreConfigWrapper.INSTANCE.get("wd.remote.url", "");
-            
-        	if (null != browser.getPort()) {
-        		remoteUrl = remoteUrl.replace("4444", browser.getPort());
-        	}
-        	
+
+            if (null != browser.getPort()) {
+                remoteUrl = remoteUrl.replace("4444", browser.getPort());
+            }
+
         }
 
         try {
@@ -93,7 +92,6 @@ public class WebDriverBuilder {
     }
 
 
-
     protected static String getSauceLabsURL() {
         String url = AutomationCoreConfigWrapper.INSTANCE.get("saucelabs.url");
 
@@ -111,18 +109,18 @@ public class WebDriverBuilder {
 
         List<String> listOfArguments = null;
 
-        if(!arguments.isEmpty() && !arguments.equalsIgnoreCase("")) {
+        if (!arguments.isEmpty() && !arguments.equalsIgnoreCase("")) {
             listOfArguments = Arrays.asList(arguments.split(","));
         }
 
-        if(listOfArguments != null && !listOfArguments.isEmpty()) {
+        if (listOfArguments != null && !listOfArguments.isEmpty()) {
             options.addArguments(listOfArguments);
         }
 
     }
 
     protected static void addBinaryToChromeOptions(ChromeOptions options, String binaryPath) {
-        if(binaryPath != null && !binaryPath.isEmpty()) {
+        if (binaryPath != null && !binaryPath.isEmpty()) {
             options.setBinary(binaryPath);
         }
     }

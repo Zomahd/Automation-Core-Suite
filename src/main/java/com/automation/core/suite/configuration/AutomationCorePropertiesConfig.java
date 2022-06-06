@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class AutomationCorePropertiesConfig implements IAutomationCoreConfig{
+public class AutomationCorePropertiesConfig implements IAutomationCoreConfig {
 
     private static Properties properties = null;
 
@@ -36,7 +36,7 @@ public class AutomationCorePropertiesConfig implements IAutomationCoreConfig{
         return value != null ? value : def;
     }
 
-    public  boolean getBoolean(String key) {
+    public boolean getBoolean(String key) {
         return "true".equalsIgnoreCase(get(key));
     }
 

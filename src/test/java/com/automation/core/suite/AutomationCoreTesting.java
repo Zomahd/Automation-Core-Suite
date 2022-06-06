@@ -3,7 +3,7 @@ package com.automation.core.suite;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AutomationCoreTestTest extends AutomationCoreTest {
+public class AutomationCoreTesting extends AutomationCoreTest {
 
     @Test
     public void testInheritance() {

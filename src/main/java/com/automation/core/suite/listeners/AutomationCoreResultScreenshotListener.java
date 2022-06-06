@@ -10,7 +10,8 @@ import org.testng.ITestResult;
 
 public class AutomationCoreResultScreenshotListener implements ITestListener {
 
-    public void onTestStart(ITestResult result) {}
+    public void onTestStart(ITestResult result) {
+    }
 
     public void onTestSuccess(ITestResult result) {
         takeScreenshot(result);
@@ -20,15 +21,18 @@ public class AutomationCoreResultScreenshotListener implements ITestListener {
         takeScreenshot(result);
     }
 
-    public void onTestSkipped(ITestResult result) {}
+    public void onTestSkipped(ITestResult result) {
+    }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
         takeScreenshot(result);
     }
 
-    public void onStart(ITestContext context) {}
+    public void onStart(ITestContext context) {
+    }
 
-    public void onFinish(ITestContext context) {}
+    public void onFinish(ITestContext context) {
+    }
 
 
     protected void takeScreenshot(ITestResult result) {

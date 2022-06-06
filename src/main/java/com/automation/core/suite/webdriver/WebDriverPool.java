@@ -10,8 +10,8 @@ import java.util.List;
 
 public class WebDriverPool {
 
-    private HashMap<Browser, List<WebDriver>> pool;
-    private HashMap<WebDriver, Browser> drivers;
+    private final HashMap<Browser, List<WebDriver>> pool;
+    private final HashMap<WebDriver, Browser> drivers;
 
     public WebDriverPool() {
         pool = new HashMap<Browser, List<WebDriver>>();
@@ -19,7 +19,7 @@ public class WebDriverPool {
     }
 
     public WebDriver get(Browser browser) throws UnknownBrowserException {
-        synchronized(this) {
+        synchronized (this) {
             List<WebDriver> available = pool.get(browser);
 
             if (available != null && available.size() > 0) {
@@ -40,7 +40,7 @@ public class WebDriverPool {
     }
 
     public void release(WebDriver wd) {
-        synchronized(this) {
+        synchronized (this) {
             Browser browser = drivers.get(wd);
 
             if (browser != null) {
@@ -57,7 +57,7 @@ public class WebDriverPool {
     }
 
     public void closeAll() {
-        for (WebDriver wd: drivers.keySet()) {
+        for (WebDriver wd : drivers.keySet()) {
             close(wd);
         }
     }
@@ -65,7 +65,8 @@ public class WebDriverPool {
     private void close(WebDriver driver) {
         try {
             driver.quit();
-        } catch (Exception ignore) {}
+        } catch (Exception ignore) {
+        }
     }
 
     private boolean isValid(WebDriver driver) {

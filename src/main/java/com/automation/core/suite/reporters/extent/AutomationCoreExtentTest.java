@@ -32,20 +32,20 @@ public class AutomationCoreExtentTest extends ExtentTest {
     }
 
     public void log(LogStatus logStatus, Throwable throwable, Long timestamp) {
-        this.log(logStatus, null, "<pre>" + ExceptionUtil.createExceptionInfo(throwable, (Test)getTest()).getStackTrace() + "</pre>", timestamp);
+        this.log(logStatus, null, "<pre>" + ExceptionUtil.createExceptionInfo(throwable, (Test) getTest()).getStackTrace() + "</pre>", timestamp);
     }
 
     public void log(LogStatus logStatus, String stepName, Throwable throwable, Long timestamp) {
-        this.log(logStatus, stepName, "<pre>" + ExceptionUtil.createExceptionInfo(throwable, (Test)getTest()).getStackTrace() + "</pre>", timestamp);
+        this.log(logStatus, stepName, "<pre>" + ExceptionUtil.createExceptionInfo(throwable, (Test) getTest()).getStackTrace() + "</pre>", timestamp);
     }
 
     public void log(LogStatus logStatus, String stepName, String details, Long timestamp) {
         Log evt = new Log();
         evt.setLogStatus(logStatus);
-        evt.setStepName(stepName == null?null:stepName.trim());
-        evt.setDetails(details == null?"":details.trim());
+        evt.setStepName(stepName == null ? null : stepName.trim());
+        evt.setDetails(details == null ? "" : details.trim());
 
-        Test test = (Test)getTest();
+        Test test = (Test) getTest();
         test.setLog(evt);
         test.trackLastRunStatus();
         runStatus = test.getStatus();

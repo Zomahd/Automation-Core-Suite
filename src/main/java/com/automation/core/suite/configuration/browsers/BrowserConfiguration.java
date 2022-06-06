@@ -12,7 +12,7 @@ public class BrowserConfiguration extends XMLProperties implements Browser {
 
     @JacksonXmlProperty(isAttribute = true)
     protected String service;
-    
+
     @JacksonXmlProperty(isAttribute = true)
     protected String port;
 
@@ -35,7 +35,7 @@ public class BrowserConfiguration extends XMLProperties implements Browser {
     public void setPort(String port) {
         this.port = port;
     }
-    
+
     public String getService() {
         return service;
     }

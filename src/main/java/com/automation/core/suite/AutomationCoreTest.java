@@ -15,7 +15,9 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -29,12 +31,40 @@ public class AutomationCoreTest extends AutomationCoreBase {
     protected ThreadLocal<List<Screenshot>> screenshots = new ThreadLocal<List<Screenshot>>();
     protected Browser browser = null;
 
-    public AutomationCoreTest() {}
+    public AutomationCoreTest() {
+    }
 
     public AutomationCoreTest(Browser browser) {
         this.browser = browser;
     }
 
+    @DataProvider(name = "browsers", parallel = true)
+    protected static Object[][] getAllBrowsers(ITestContext context) {
+        loadBrowsers(context);
+        return AutomationCoreUtils.listToObjectArray(BrowserFactory.getBrowsers());
+    }
+
+    @DataProvider(name = "browsersDesktop", parallel = true)
+    protected static Object[][] getDesktopBrowsers(ITestContext context) {
+        loadBrowsers(context);
+        return AutomationCoreUtils.listToObjectArray(BrowserFactory.getDesktopBrowsers());
+    }
+
+    @DataProvider(name = "mobileDesktop", parallel = true)
+    protected static Object[][] getMobileBrowsers(ITestContext context) {
+        loadBrowsers(context);
+        return AutomationCoreUtils.listToObjectArray(BrowserFactory.getMobileBrowsers());
+    }
+
+    protected static void loadBrowsers(ITestContext context) {
+        String browserConfig = context.getCurrentXmlTest().getParameter("browsers");
+
+        if (browserConfig == null || browserConfig.length() == 0) {
+            browserConfig = "default";
+        }
+
+        BrowserFactory.load(browserConfig);
+    }
 
     @BeforeMethod(alwaysRun = true)
     protected void beforeAutomationCoreTestMethod(Object[] args) {
@@ -69,34 +99,6 @@ public class AutomationCoreTest extends AutomationCoreBase {
                 screenshots.get().add(new Screenshot(name, file));
             }
         }
-    }
-
-    @DataProvider(name = "browsers", parallel = true)
-    protected static Object[][] getAllBrowsers(ITestContext context) {
-        loadBrowsers(context);
-        return AutomationCoreUtils.listToObjectArray(BrowserFactory.getBrowsers());
-    }
-
-    @DataProvider(name = "browsersDesktop", parallel = true)
-    protected static Object[][] getDesktopBrowsers(ITestContext context) {
-        loadBrowsers(context);
-        return AutomationCoreUtils.listToObjectArray(BrowserFactory.getDesktopBrowsers());
-    }
-
-    @DataProvider(name = "mobileDesktop", parallel = true)
-    protected static Object[][] getMobileBrowsers(ITestContext context) {
-        loadBrowsers(context);
-        return AutomationCoreUtils.listToObjectArray(BrowserFactory.getMobileBrowsers());
-    }
-
-    protected static void loadBrowsers(ITestContext context) {
-        String browserConfig = context.getCurrentXmlTest().getParameter("browsers");
-
-        if (browserConfig == null || browserConfig.length() == 0) {
-            browserConfig = "default";
-        }
-
-        BrowserFactory.load(browserConfig);
     }
 
     protected WebDriver initWebDriver(Browser browser) {

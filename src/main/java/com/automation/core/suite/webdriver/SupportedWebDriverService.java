@@ -5,12 +5,22 @@ public enum SupportedWebDriverService {
     REMOTE("remote", "Remote"),
     SAUCELABS("saucelabs", "SauceLabs");
 
-    private String id;
-    private String name;
+    private final String id;
+    private final String name;
 
     SupportedWebDriverService(String id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public static SupportedWebDriverService getById(String id) {
+        for (SupportedWebDriverService service : values()) {
+            if (service.id.equals(id)) {
+                return service;
+            }
+        }
+
+        return null;
     }
 
     public String getId() {
@@ -19,15 +29,5 @@ public enum SupportedWebDriverService {
 
     public String getName() {
         return name;
-    }
-
-    public static SupportedWebDriverService getById(String id) {
-        for(SupportedWebDriverService service : values()) {
-            if (service.id.equals(id)) {
-                return service;
-            }
-        }
-
-        return null;
     }
 }

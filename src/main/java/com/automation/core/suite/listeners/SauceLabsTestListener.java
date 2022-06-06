@@ -16,8 +16,8 @@ import java.util.*;
 
 public class SauceLabsTestListener implements ITestListener {
 
-    protected ThreadLocal<Boolean> enabled = new ThreadLocal<Boolean>();
     protected static String testBuildName = null;
+    protected ThreadLocal<Boolean> enabled = new ThreadLocal<Boolean>();
 
     public void onTestStart(ITestResult result) {
         enabled.set(AutomationCoreConfigWrapper.INSTANCE.getBoolean("saucelabs.enable.listener") &&
@@ -87,11 +87,15 @@ public class SauceLabsTestListener implements ITestListener {
         }
     }
 
-    public void onTestSkipped(ITestResult result) {}
+    public void onTestSkipped(ITestResult result) {
+    }
 
-    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {}
+    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+    }
 
-    public void onStart(ITestContext context) {}
+    public void onStart(ITestContext context) {
+    }
 
-    public void onFinish(ITestContext context) {}
+    public void onFinish(ITestContext context) {
+    }
 }

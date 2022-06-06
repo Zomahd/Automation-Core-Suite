@@ -27,7 +27,7 @@ public class FileUtil {
         }
 
         boolean copied = false;
-        if(deleted) {
+        if (deleted) {
 
             //Copy the custom file again
             destination = new File(AutomationCoreConfigWrapper.INSTANCE.get("chrome.profile.destination"));
@@ -36,8 +36,8 @@ public class FileUtil {
             String source = AutomationCoreConfigWrapper.INSTANCE.get("chrome.profile.location", "");
             try {
                 if (!source.isEmpty()) {
-                        FileUtils.copyDirectoryToDirectory(new File(source), destination);
-                        copied = true;
+                    FileUtils.copyDirectoryToDirectory(new File(source), destination);
+                    copied = true;
                 } else {
                     System.err.println("Source or Destination are empty values");
                 }
@@ -48,7 +48,7 @@ public class FileUtil {
 
         }
 
-        if(copied) {
+        if (copied) {
             System.out.println("Custom Profile copied correctly.");
         }
 

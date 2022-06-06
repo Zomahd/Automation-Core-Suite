@@ -75,26 +75,26 @@ public class ZipReporter implements IReporter {
     }
 
 
-    protected void zipFolder(File inputFolder, ZipOutputStream zipOutputStream, String parentName)  throws IOException {
+    protected void zipFolder(File inputFolder, ZipOutputStream zipOutputStream, String parentName) throws IOException {
 
-        String zipEntryName = parentName +inputFolder.getName()+File.separator;
+        String zipEntryName = parentName + inputFolder.getName() + File.separator;
         ZipEntry folderZipEntry = new ZipEntry(zipEntryName);
         zipOutputStream.putNextEntry(folderZipEntry);
 
         File[] contents = inputFolder.listFiles();
 
-        for (File f : contents){
+        for (File f : contents) {
             if (f.isFile())
                 zipFile(f, zipOutputStream, zipEntryName);
-            else if(f.isDirectory())
+            else if (f.isDirectory())
                 zipFolder(f, zipOutputStream, zipEntryName);
         }
         zipOutputStream.closeEntry();
     }
 
-    protected void zipFile(File inputFile, ZipOutputStream zipOutputStream, String parentName) throws IOException{
+    protected void zipFile(File inputFile, ZipOutputStream zipOutputStream, String parentName) throws IOException {
 
-        ZipEntry zipEntry = new ZipEntry(parentName+inputFile.getName());
+        ZipEntry zipEntry = new ZipEntry(parentName + inputFile.getName());
         zipOutputStream.putNextEntry(zipEntry);
 
         FileInputStream fileInputStream = new FileInputStream(inputFile);

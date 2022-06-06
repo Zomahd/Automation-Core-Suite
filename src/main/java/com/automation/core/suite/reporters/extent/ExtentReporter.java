@@ -18,14 +18,17 @@ import org.testng.xml.XmlSuite;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 public class ExtentReporter implements IReporter {
 
     public final static String EXTENT_REPORT_DIRECTORY = "extent";
 
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
-        String basePath = createReportDirectory(outputDirectory + EXTENT_REPORT_DIRECTORY +  File.separator);
+        String basePath = createReportDirectory(outputDirectory + EXTENT_REPORT_DIRECTORY + File.separator);
         ExtentReports extent = new AutomationCoreExtentReports(basePath + File.separator + "index.html", true);
         extent.loadConfig(ExtentReporter.class.getResource("/extent-report.xml"));
 
@@ -65,7 +68,7 @@ public class ExtentReporter implements IReporter {
                     if (AutomationCoreConfigWrapper.INSTANCE.getBoolean("extent.enable.browser.category")) {
                         Browser browser = AutomationCoreUtils.getBrowser(result);
                         if (browser != null) {
-                            test.assignCategory("Browser: " + browser.toString());
+                            test.assignCategory("Browser: " + browser);
                         }
                     }
 
@@ -135,7 +138,7 @@ public class ExtentReporter implements IReporter {
         return calendar.getTime();
     }
 
-    private String createReportDirectory(String path)    {
+    private String createReportDirectory(String path) {
         File newDirectory = new File(path + "images");
         if (!newDirectory.mkdirs()) {
             System.out.println("Failed creating directory: " + path);

@@ -27,7 +27,8 @@ public class AutomationCoreReportAttachmentsListener implements ITestListener {
         processAttachments(result);
     }
 
-    public void onTestSkipped(ITestResult result) {}
+    public void onTestSkipped(ITestResult result) {
+    }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
         processAttachments(result);
@@ -37,7 +38,8 @@ public class AutomationCoreReportAttachmentsListener implements ITestListener {
         context.setAttribute("executionName", AutomationCoreReportUtils.getExecutionTagName());
     }
 
-    public void onFinish(ITestContext context) {}
+    public void onFinish(ITestContext context) {
+    }
 
 
     protected void processAttachments(ITestResult result) {

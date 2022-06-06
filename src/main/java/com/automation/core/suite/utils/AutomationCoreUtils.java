@@ -52,7 +52,7 @@ public class AutomationCoreUtils {
             data = new Object[list.size()][];
 
             for (int i = 0; i < list.size(); i++) {
-                data[i] = new Object[] { list.get(i) };
+                data[i] = new Object[]{list.get(i)};
             }
         }
 

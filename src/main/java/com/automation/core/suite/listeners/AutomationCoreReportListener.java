@@ -25,11 +25,11 @@ public class AutomationCoreReportListener extends IAutomationCoreListener implem
     private boolean generated = false;
 
     public AutomationCoreReportListener() {
-        if(listeners == null) {
+        if (listeners == null) {
             listeners = new ArrayList<>();
             addListeners(AutomationCoreConfigWrapper.INSTANCE.get("automation.reporters",
                     "com.automation.core.suite.reporters.excel.ExcelReporter," +
-                    "com.automation.core.suite.reporters.extent.ExtentReporter"));
+                            "com.automation.core.suite.reporters.extent.ExtentReporter"));
         }
     }
 
@@ -40,8 +40,8 @@ public class AutomationCoreReportListener extends IAutomationCoreListener implem
             //String basePath = outputDirectory + File.separator + ".." + File.separator + REPORT_ARTIFACT_DIRECTORY + File.separator;
             String basePath = outputDirectory + File.separator + REPORT_ARTIFACT_DIRECTORY + File.separator;
 
-            String dateOutputDirectory =basePath + getReportDateFolder() + File.separator;
-            String latestOutputDirectory =basePath + REPORT_LATEST_DIRECTORY + File.separator;
+            String dateOutputDirectory = basePath + getReportDateFolder() + File.separator;
+            String latestOutputDirectory = basePath + REPORT_LATEST_DIRECTORY + File.separator;
 
             if (!createDirectory(dateOutputDirectory)) {
                 System.out.println("Failed creating directory: " + dateOutputDirectory);
@@ -55,7 +55,7 @@ public class AutomationCoreReportListener extends IAutomationCoreListener implem
                 System.out.println("Failed deleting directory: " + latestOutputDirectory);
             }
 
-            if(includeLatestDirectory()) {
+            if (includeLatestDirectory()) {
                 if (!copyDirectory(dateOutputDirectory, latestOutputDirectory)) {
                     System.out.println("Failed creating directory: " + latestOutputDirectory);
                 }
@@ -63,7 +63,7 @@ public class AutomationCoreReportListener extends IAutomationCoreListener implem
         }
     }
 
-    private String getReportDateFolder()  {
+    private String getReportDateFolder() {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH.mm.ss.SS");
         return sdf.format(calendar.getTime());
@@ -136,7 +136,7 @@ public class AutomationCoreReportListener extends IAutomationCoreListener implem
     @Override
     protected void methodError(String method, ITestNGListener listener, Throwable throwable) {
         AutomationCoreErrorUtils.log("AutomationCoreReportListener: " + ERROR_WHILE_EXEC + " \"" +
-                method + "\" of \"" + ((ITestListener)listener).getClass().getName() + "\"", throwable);
+                method + "\" of \"" + ((ITestListener) listener).getClass().getName() + "\"", throwable);
     }
 
 }

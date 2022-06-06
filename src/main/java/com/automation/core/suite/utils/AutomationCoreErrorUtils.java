@@ -5,7 +5,7 @@ import com.automation.core.suite.logs.AutomationCoreLogger;
 
 public class AutomationCoreErrorUtils {
 
-    private static AutomationCoreLogger logger = new AutomationCoreLogger("framework.log.level", false);
+    private static final AutomationCoreLogger logger = new AutomationCoreLogger("framework.log.level", false);
 
     public static void log(String msg) {
         log(msg, null);

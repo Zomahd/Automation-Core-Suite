@@ -57,7 +57,7 @@ public class AutomationCoreExtentReports extends ExtentReports {
 
     @Override
     public synchronized ExtentTest startTest(String testName, String description) {
-        if(this.testList == null) {
+        if (this.testList == null) {
             this.testList = new ArrayList<ExtentTest>();
         }
 

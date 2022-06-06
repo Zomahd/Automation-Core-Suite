@@ -7,7 +7,7 @@ public class UnknownBrowserException extends Exception {
 
     private static final long serialVersionUID = 1L;
 
-    public UnknownBrowserException(String message)  {
+    public UnknownBrowserException(String message) {
         super(message);
     }
 }

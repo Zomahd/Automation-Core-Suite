@@ -91,7 +91,7 @@ public class AutomationCoreReportUtils {
 
             if (param != null) {
                 if (!(param instanceof Browser) || !excludeBrowser) {
-                    builder.append(param.toString());
+                    builder.append(param);
                 }
             } else {
                 builder.append("null");

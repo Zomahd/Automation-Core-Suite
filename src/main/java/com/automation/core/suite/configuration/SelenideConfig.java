@@ -27,7 +27,7 @@ public class SelenideConfig {
 
     public static void setReportDirectory(String reportDirectory) {
 
-        if(reportDirectory != null && !reportDirectory.isEmpty()) {
+        if (reportDirectory != null && !reportDirectory.isEmpty()) {
             Configuration.reportsFolder = reportDirectory;
         }
 

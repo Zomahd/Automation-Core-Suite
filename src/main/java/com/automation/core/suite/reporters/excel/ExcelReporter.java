@@ -1,7 +1,7 @@
 package com.automation.core.suite.reporters.excel;
 
-import com.automation.core.suite.configuration.BrowserFactory;
 import com.automation.core.suite.configuration.AutomationCoreConfigWrapper;
+import com.automation.core.suite.configuration.BrowserFactory;
 import com.automation.core.suite.models.Browser;
 import com.automation.core.suite.utils.AutomationCoreReportUtils;
 import org.apache.poi.ss.usermodel.Cell;
@@ -9,7 +9,10 @@ import org.apache.poi.ss.usermodel.CellCopyPolicy;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.util.CellRangeAddress;
-import org.apache.poi.xssf.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.*;
 import org.testng.xml.XmlSuite;
 
@@ -30,7 +33,7 @@ public class ExcelReporter implements IReporter {
         try {
             FileOutputStream output =
                     new FileOutputStream(outputDirectory + "TestReport.xlsx");
-            XSSFWorkbook workbook =  new XSSFWorkbook(ExcelReporter.class.getResourceAsStream(templatePath));
+            XSSFWorkbook workbook = new XSSFWorkbook(ExcelReporter.class.getResourceAsStream(templatePath));
             XSSFSheet dashboardSheet = workbook.getSheetAt(0);
             XSSFSheet resultsSheet = workbook.getSheet("Results");
 
@@ -133,7 +136,7 @@ public class ExcelReporter implements IReporter {
         setCellValue(row, 3, AutomationCoreReportUtils.getMethodParametersAsString(result, true));
         setCellValue(row, 4, AutomationCoreReportUtils.getBrowser(result));
         setCellValue(row, 5, status);
-        setCellValue(row, 6, ((double)(result.getEndMillis() - result.getStartMillis()))/ 1000);
+        setCellValue(row, 6, ((double) (result.getEndMillis() - result.getStartMillis())) / 1000);
         setCellStyle(row, 6, numberCellStyle);
         setCellValue(row, 7, new Date(result.getStartMillis()));
         setCellStyle(row, 7, dateCellStyle);
